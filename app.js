@@ -21,18 +21,6 @@ select.addEventListener('click', () => input.click());
 input.addEventListener('change', () => {
 	let file = input.files;
         
-        // if user select more than 1 image or no image
-        if (file.length > 1 || file.length == 0) return;
-         
-	files.push(file[0]);
-  input.files = null;
-	showImages();
-})
-
-/* INPUT CHANGE EVENT */
-input.addEventListener('change', () => {
-	let file = input.files;
-        
         // if user select no image
         if (file.length == 0) return;
          
