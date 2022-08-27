@@ -26,7 +26,7 @@ input.addEventListener('change', () => {
          
 	for(let i = 0; i < file.length; i++) {
             if (file[i].type.split("/")[0] != 'image') continue;
-            if (files.every(e => e.name != file[i].name)) files.push(file[i])
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
         }
 
 	showImages();
@@ -60,7 +60,7 @@ dragArea.addEventListener('drop', e => {
 		/** Check selected file is image */
 		if (file[i].type.split("/")[0] != 'image') continue;
 		
-		if (files.every(e => e.name != file[i].name)) files.push(file[i])
+		if (!files.some(e => e.name == file[i].name)) files.push(file[i])
 	}
 	showImages();
 });
