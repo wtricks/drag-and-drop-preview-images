@@ -8,10 +8,10 @@
 
 /** Variables */
 let files = [],
-form = document.querySelector('form'),
-input = document.querySelector('form input'),
+dragArea = document.querySelector('.drag-area'),
+input = document.querySelector('.drag-area input'),
 button = document.querySelector('.card button');
-select = document.querySelector('form .select');
+select = document.querySelector('.drag-area .select');
 container = document.querySelector('.container');
 
 /** CLICK LISTENER */
@@ -21,16 +21,27 @@ select.addEventListener('click', () => input.click());
 input.addEventListener('change', () => {
 	let file = input.files;
         
-        // if user select no image
-        if (file.length == 0) return;
+    // if user select no image
+    if (file.length == 0) return;
          
 	for(let i = 0; i < file.length; i++) {
-            if (file[i].type.split("/")[0] != 'image') continue;
-            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
-        }
+        if (file[i].type.split("/")[0] != 'image') continue;
+        if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+    }
 
 	showImages();
-})
+});
+
+/** SHOW IMAGES */
+function showImages() {
+	container.innerHTML = files.reduce((prev, curr, index) => {
+		return `${prev}
+		    <div class="image">
+			    <span onclick="delImage(${index})">&times;</span>
+			    <img src="${URL.createObjectURL(curr)}" />
+			</div>`
+	}, '');
+}
 
 /* DELETE IMAGE */
 function delImage(index) {
