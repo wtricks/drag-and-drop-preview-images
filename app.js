@@ -10,8 +10,8 @@
 let files = [],
 dragArea = document.querySelector('.drag-area'),
 input = document.querySelector('.drag-area input'),
-button = document.querySelector('.card button');
-select = document.querySelector('.drag-area .select');
+button = document.querySelector('.card button'),
+select = document.querySelector('.drag-area .select'),
 container = document.querySelector('.container');
 
 /** CLICK LISTENER */
